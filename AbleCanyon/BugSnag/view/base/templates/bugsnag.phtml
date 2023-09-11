@@ -1,0 +1,9 @@
+<?php /**@var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer*/ ?>
+<?php
+$script = <<<script
+require(['bugsnag'], function(Bugsnag) {
+    Bugsnag.start({ apiKey: '{$this->getData('viewModel')->getApiKey()}' });
+});
+script;
+?>
+<?= /* @noEscape */ $secureRenderer->renderTag('script', [], $script, false) ?>
